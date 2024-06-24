@@ -30,6 +30,14 @@ class AprendizController extends Controller
      */
     public function store(Request $request)
     {
+        $aprendiz=new Aprendiz;
+        $aprendiz->cedula=$request->input('cedula');
+        $aprendiz->nombre=$request->input('nombre');
+        $aprendiz->apellido=$request->input('apellido');
+        $aprendiz->correo=$request->input('correo');
+        $aprendiz->telefono=$request->input('telefono');
+        $aprendiz->save();
+        return redirect()->back();
         //
     }
 
@@ -44,24 +52,36 @@ class AprendizController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Aprendiz $aprendiz)
+    public function edit($id)
     {
+
         //
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Aprendiz $aprendiz)
+    public function update(Request $request, $id)
     {
+        $aprendiz=Aprendiz::find($id);
+        $aprendiz->cedula=$request->input('cedula');
+        $aprendiz->nombre=$request->input('nombre');
+        $aprendiz->apellido=$request->input('apellido');
+        $aprendiz->correo=$request->input('correo');
+        $aprendiz->telefono=$request->input('telefono');
+        $aprendiz->update();
+        return redirect()->back();
         //
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Aprendiz $aprendiz)
+    public function destroy($id)
     {
+        $aprendiz=Aprendiz::find($id);
+        $aprendiz->delete();
+        return redirect()->back();
         //
     }
 }

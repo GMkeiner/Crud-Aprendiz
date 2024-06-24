@@ -6,9 +6,9 @@
     <div class="col-md-2"></div>
         <div class="col-md-8">
             <br><br>
-            <h3>LISTA DE CLIENTES</h3>
+            <h3>LISTA DE APRENDICES</h3>
             <br>
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#create">
                 Nuevo
             </button>            
             <div class="table-responsive">
@@ -22,6 +22,7 @@
                             <th scope="col">APELLIDO</th>
                             <th scope="col">CORREO</th>
                             <th scope="col">TELEFONO</th>
+                            <th scope="col">ACCIONES</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -33,7 +34,15 @@
                             <td>{{$aprendiz->apellido}}</td>
                             <td>{{$aprendiz->correo}}</td>
                             <td>{{$aprendiz->telefono}}</td>
+                            <td>
+                                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#edit{{$aprendiz->id}}">
+                                    Editar
+                                </button>  <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete{{$aprendiz->id}}">
+                                    Eliminar
+                                </button>  
+                            </td>
                         </tr>
+                        @include('aprendiz.info')
                         @endforeach
                     </tbody>
                 </table>
